@@ -65,3 +65,5 @@ Order Singles, 6 Packs (Get a disco)
 Currently working on building Lambdas for prices for chatbot
 Researching in Stackoverflow.com 
 Still Researching. So much reading... 
+
+Stopping with Chatbot for now, probably should work on the website
