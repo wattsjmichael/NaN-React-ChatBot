@@ -67,3 +67,4 @@ Researching in Stackoverflow.com
 Still Researching. So much reading... 
 
 Stopping with Chatbot for now, probably should work on the website
+So the chat bot is now going to become a conversational bot. In the future I will make it be able to get orders. 
