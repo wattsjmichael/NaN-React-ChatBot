@@ -1,12 +1,13 @@
 import React from "react";
-import Header from "./components/Header"
+import Header from "./Header";
+import BrewList from "./BrewList";
 
 function App() {
   return (
 
     <React.Fragment>
       <Header />
-      <p>A bunch of text</p>
+      <BrewList />
     </React.Fragment>
   );
 }
