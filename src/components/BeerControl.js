@@ -10,17 +10,26 @@ class BeerControl extends React.Component {
       formVisibleOnPage: false
     };
   }
+
+  handleClick = () => {
+    this.setState(prevState => ({
+      formVisibleOnPage: !prevState.formVisibleOnPage
+    }));
+  }
   
   render() {
     let currentlyVisibleState= null;
+    let addBeerButton = null;
     if (this.state.formVisibleOnPage) {
       currentlyVisibleState = <NewBeerForm />
     } else {
       currentlyVisibleState = <BeerList />
+      addBeerButton = <button onClick={this.handleClick}> Add a beer</button>
     }
     return(
       <React.Fragment>
         {currentlyVisibleState}
+        {addBeerButton}
       </React.Fragment>
     );
   }
