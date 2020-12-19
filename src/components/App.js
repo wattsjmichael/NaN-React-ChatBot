@@ -1,13 +1,13 @@
 import React from "react";
 import Header from "./Header";
-import BrewList from "./BrewList";
+import BeerControl from "./BeerControl";
 
 function App() {
   return (
 
     <React.Fragment>
       <Header />
-      <BrewList />
+      <BeerControl />
     </React.Fragment>
   );
 }

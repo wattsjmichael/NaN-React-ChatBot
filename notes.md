@@ -4,7 +4,7 @@ NaN – (Not a Number) is a Cyberpunk/Future Brewery based in Vancouver (New Cas
 Create an ecomm site with an AWS Chat bot - 
 
 Things we want with the site
-Log in
+Log in for certain pages
 Checkout (Cart)
 Database (MongoDB)
 Built in React
