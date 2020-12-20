@@ -2,10 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 
 
-function Beer(props) {
+function Brew(props) {
   return (
     <React.Fragment>
-      <div className="brewItem">
+      <div className = "brewItem" onClick = {() => props.whenBrewClicked(props.id)}>
         <h2>{props.name}</h2>
         <h3>{props.style}</h3>
         <p>{props.price}</p>
@@ -15,10 +15,12 @@ function Beer(props) {
   );
 }
 
-Beer.propTypes = {
+Brew.propTypes = {
   name : PropTypes.string.isRequired,
   style : PropTypes.string.isRequired,
   price : PropTypes.string.isRequired,
+  id : PropTypes.string,
+  whenBrewClicked: PropTypes.func
 };
 
-export default Beer;
+export default Brew;

@@ -1,45 +1,55 @@
 import React from "react";
-import Beer from "./Beer";
+import Brew from "./Beer";
+import PropTypes from 'prop-types';
 
 
 
-const fullBrewList = [
-  {
-    name: "The Drinky Drink",
-    style: "IPA",
-    price: "$5.50"
-  },
-  {
-    name: "The Generic Lager from the past",
-    style: "Lager",
-    price: "$5.50"
-  },
-  {
-    name: "The Darkest Knight",
-    style: "Stout",
-    price: "$5.50"
-  },
+// const fullBrewList = [
+//   {
+//     name: "The Drinky Drink",
+//     style: "IPA",
+//     price: "$5.50"
+//   },
+//   {
+//     name: "The Generic Lager from the past",
+//     style: "Lager",
+//     price: "$5.50"
+//   },
+//   {
+//     name: "The Darkest Knight",
+//     style: "Stout",
+//     price: "$5.50"
+//   },
 
-]
-
-
+// ]
 
 
 
 
 
-function BrewList() {
+
+
+function BrewList(props) {
   return (
     <React.Fragment>
-      {fullBrewList.map((beer, index) =>
-        <Beer name={beer.name}
-          style={beer.style}
-          price={beer.price}
-          key={index} />
-    )}
+      <hr />
+      {props.brewList.map((brew) =>
+      <Brew 
+          whenBrewClicked = { props.onBrewSelection}
+          name={brew.name}
+          style={brew.style}
+          price={brew.price}
+          id = {brew.id}
+          key={brew.id}/>
+      )}
 
     </React.Fragment>
   );
+}
+
+BrewList.propTypes = {
+  brewList: PropTypes.array,
+  onBrewSelection: PropTypes.func
 }
 
 export default BrewList;

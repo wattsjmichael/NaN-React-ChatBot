@@ -1,15 +1,18 @@
 //Need to be authorized to be able to access this page // 
 import { v4 } from 'uuid';
-
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function NewBeerForm(props){
 
   function handleNewBeerFormSubmission(event) {
     event.preventDefault();
-    console.log(event.target.name.value);
-    console.log(event.target.style.value);
-    console.log(event.target.price.value);
+    props.onNewBeerCreation({
+    name: event.target.name.value,
+    style: event.target.style.value,
+    price: event.target.price.value,
+    id: v4()
+    });
   }
 
 
@@ -33,6 +36,10 @@ function NewBeerForm(props){
       </form>
     </React.Fragment>
   );
+}
+
+NewBeerForm.propTypes = {
+  onNewBeerCreation: PropTypes.func
 }
 
 export default NewBeerForm;
