@@ -1,7 +1,7 @@
 //Need to be authorized to be able to access this page // 
 import { v4 } from 'uuid';
 import React from 'react';
-import ReusableBeerForm from "./ReusuableBeerForm";
+import ReusableBeerForm from "./ReusableBeerForm";
 import PropTypes from 'prop-types';
 
 function NewBeerForm(props){
