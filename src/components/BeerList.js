@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 
 
-// const fullBrewList = [
+// let brewList = [
 //   {
 //     name: "The Drinky Drink",
 //     style: "IPA",

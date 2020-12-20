@@ -2,6 +2,7 @@ import React from 'react';
 import NewBeerForm from "./NewBeerForm";
 import BrewList from "./BeerList";
 import BrewDetail from './BeerDetail';
+import EditBeerForm from './EditBeerForm';
 
 class BeerControl extends React.Component {
 
@@ -10,7 +11,8 @@ class BeerControl extends React.Component {
     this.state = {
       formVisibleOnPage: false,
       fullBrewList : [],
-      selectedBrew : null
+      selectedBrew : null,
+      editing : false,
     };
   }
 
@@ -46,18 +48,26 @@ class BeerControl extends React.Component {
       selectedBrew: null
     })
   }
+
+  handleEditClick = () => {
+    console.log("handleEditClick Reached!");
+    this.setState({editing: true});
+  }
   
   render() {
     let currentlyVisibleState= null;
     let buttonText = null;
 
 
-
-    if (this.state.selectedBrew !=null){
-      currentlyVisibleState = <BrewDetail brew = {this.state.selectedBrew} onClickingDelete = {this.handleDeletingBrew} />
+    if(this.state.editing){
+      currentlyVisibleState = <EditBeerForm brew = {this.state.selectedBrew}/>
       buttonText = "Homepage"
-    }
-    else if (this.state.formVisibleOnPage) {
+    } else if (this.state.selectedBrew !=null){
+      currentlyVisibleState = <BrewDetail brew = {this.state.selectedBrew}
+      onClickingDelete = {this.handleDeletingBrew}
+      onClickingEdit = {this.handleEditClick} />
+      buttonText = "Homepage"
+    } else if (this.state.formVisibleOnPage) {
       currentlyVisibleState = <NewBeerForm onNewBeerCreation={this.handleAddingNewBeerToList} />;
       buttonText = "Homepage";
     } else {
