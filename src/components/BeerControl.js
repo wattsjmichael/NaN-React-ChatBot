@@ -39,6 +39,13 @@ class BeerControl extends React.Component {
     this.setState({selectedBrew: selectedBrew});
   }
   
+  handleDeletingBrew = (id) => {
+    const newFullBrewList = this.state.fullBrewList.filter(brew => brew.id !== id);
+    this.setState({
+      fullBrewList : newFullBrewList,
+      selectedBrew: null
+    })
+  }
   
   render() {
     let currentlyVisibleState= null;
@@ -47,7 +54,7 @@ class BeerControl extends React.Component {
 
 
     if (this.state.selectedBrew !=null){
-      currentlyVisibleState = <BrewDetail brew = {this.state.selectedBrew} />
+      currentlyVisibleState = <BrewDetail brew = {this.state.selectedBrew} onClickingDelete = {this.handleDeletingBrew} />
       buttonText = "Homepage"
     }
     else if (this.state.formVisibleOnPage) {
