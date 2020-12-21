@@ -10,30 +10,19 @@ import * as actions from './../actions'
 
 class BeerControl extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      // formVisibleOnPage: false,
-      fullBrewList: [],
-      selectedBrew: null,
-      editing: false,
-    };
-  }
-
+  
   handleClick = () => {
-    if (this.state.selectedBrew != null) {
-      this.setState({
-        // formVisibleOnPage: false,
-        selectedBrew: null,
-        editing: false
-      });
+    const { dispatch } = this.props;
+    if (this.props.selectedBrew != null) {
+      const action = actions.notEditBrew();
+      dispatch(action)
+      const action2 = actions.notSelectedBrew();
+      dispatch(action2)
+
     } else {
-      const {dispatch} = this.props;
+      const { dispatch } = this.props;
       const action = actions.toggleForm();
       dispatch(action);
-      // this.setState(prevState => ({
-      //   formVisibleOnPage: !prevState.formVisibleOnPage
-      // }));
     }
   }
 
@@ -43,14 +32,16 @@ class BeerControl extends React.Component {
     dispatch(action);
     const action2 = actions.toggleForm();
     dispatch(action2);
-    // this.setState({ formVisibleOnPage: false });
+    
   }
 
 
 
   handleChangingSelectBrew = (id) => {
-    const selectedBrew = this.props.fullBrewList[0];
-    this.setState({ selectedBrew: selectedBrew });
+    const {dispatch} =this.props;
+    const brew = this.props.fullBrewList[id];
+    const action = actions.selectedBrew(brew);
+    dispatch(action);
   }
 
   handleDeletingBrew = (id) => {
@@ -62,18 +53,19 @@ class BeerControl extends React.Component {
   }
 
   handleEditClick = () => {
-    console.log("handleEditClick Reached!");
-    this.setState({ editing: true });
+    const { dispatch } = this.props;
+    const action = actions.editBrew();
+    dispatch(action);
   }
 
   handleEditingBeerInList = (brewToEdit) => {
-   const { dispatch } = this.props;
-   const action = actions.addBrew(brewToEdit);
-   dispatch(action);
-    this.setState({
-      editing: false,
-      selectedBrew: null
-    });
+    const { dispatch } = this.props;
+    const action = actions.addBrew(brewToEdit);
+    dispatch(action);
+    const action2 = actions.notEditBrew();
+    dispatch(action2);
+    const action3 = actions.notSelectedBrew();
+    dispatch(action3);
   }
 
   render() {
@@ -81,17 +73,20 @@ class BeerControl extends React.Component {
     let buttonText = null;
 
 
-    if (this.state.editing) {
-      currentlyVisibleState = <EditBeerForm brew={this.state.selectedBrew} onEditBeer={this.handleEditingBeerInList} />
+    if (this.props.editing) {
+      currentlyVisibleState = <EditBeerForm brew={this.props.selectedBrew} onEditBeer={this.handleEditingBeerInList} />
       buttonText = "Homepage"
-    } else if (this.state.selectedBrew != null) {
-      currentlyVisibleState = <BrewDetail brew={this.state.selectedBrew}
+
+    } else if (this.props.selectedBrew != null) {
+      currentlyVisibleState = <BrewDetail brew={this.props.selectedBrew}
         onClickingDelete={this.handleDeletingBrew}
         onClickingEdit={this.handleEditClick} />
       buttonText = "Homepage"
-    } else if (this.props.formVisibleOnPage) {
+
+    } else if (this.props.beerFormVisibleOnPage) {
       currentlyVisibleState = <NewBeerForm onNewBeerCreation={this.handleAddingNewBeerToList} />;
       buttonText = "Homepage";
+
     } else {
       currentlyVisibleState = <BrewList brewList={this.props.fullBrewList} onBrewSelection={this.handleChangingSelectBrew} />
       buttonText = "Add a Beer";
@@ -108,15 +103,20 @@ class BeerControl extends React.Component {
 
 BeerControl.propTypes = {
   fullBrewList: PropTypes.object,
-  beerFormVisibleOnPage: PropTypes.bool
-  
+  beerFormVisibleOnPage: PropTypes.bool,
+  selectedBrew: PropTypes.object,
+  editing: PropTypes.bool
+
 };
 
 
 const mapStatetoProps = state => {
   return {
-    fullBrewList: state,
-    beerFormVisibleOnPage: state.beerFormVisibleOnPage
+    fullBrewList: state.fullBrewList,
+    beerFormVisibleOnPage: state.beerFormVisibleOnPage,
+    selectedBrew: state.selectedBrew,
+    editing: state.editing
+
   }
 }
 

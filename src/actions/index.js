@@ -17,3 +17,28 @@ export const addBrew = (brew) => {
     id: id
   }
 }
+
+export const editBrew = () => {
+  return {
+    type: "EDIT_KEG"
+  }
+}
+
+export const notEditBrew = () => {
+  return {
+    type: "NOT_EDIT_KEG"
+  }
+}
+
+export const selectedBrew = (brew) => {
+  return {
+    type : "SELECT_BREW",
+    selectedBrew: brew
+  }
+}
+
+export const notSelectedBrew = () => {
+  return {
+    type:'NOT_SELECT_BREW'
+  }
+}

@@ -1,4 +1,4 @@
-import beerFormVisibleReducer from "../../reducers/beer-form-visible-reducer";
+import beerFormVisibleReducer from "../../reducers/Beer-form-visible-reducer";
 
 describe ("beerFormVisibleReducer", () => {
   test("Should return default state if no action type is recognized", () => {
