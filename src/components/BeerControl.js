@@ -5,6 +5,7 @@ import BrewList from "./BeerList";
 import BrewDetail from './BeerDetail';
 import EditBeerForm from './EditBeerForm';
 import PropTypes from "prop-types";
+import * as actions from './../actions'
 
 
 class BeerControl extends React.Component {
@@ -28,9 +29,7 @@ class BeerControl extends React.Component {
       });
     } else {
       const {dispatch} = this.props;
-      const action = {
-        type: 'TOGGLE_FORM'
-      }
+      const action = actions.toggleForm();
       dispatch(action);
       // this.setState(prevState => ({
       //   formVisibleOnPage: !prevState.formVisibleOnPage
@@ -40,18 +39,9 @@ class BeerControl extends React.Component {
 
   handleAddingNewBeerToList = (newBrew) => {
     const { dispatch } = this.props;
-    const { id, name, style, price } = newBrew;
-    const action = {
-      type: 'ADD_BREW',
-      name: name,
-      style: style,
-      price: price,
-      id: id,
-    }
+    const action = actions.addBrew(newBrew);
     dispatch(action);
-    const action2 = {
-      type: 'TOGGLE_FORM'
-    }
+    const action2 = actions.toggleForm();
     dispatch(action2);
     // this.setState({ formVisibleOnPage: false });
   }
@@ -65,10 +55,7 @@ class BeerControl extends React.Component {
 
   handleDeletingBrew = (id) => {
     const { dispatch } = this.props;
-    const action = {
-      type: 'DELETE_BREW',
-      id: id
-    }
+    const action = actions.deleteBrew(id);
     dispatch(action);
     this.setState({ selectedBrew: null });
 
@@ -80,11 +67,10 @@ class BeerControl extends React.Component {
   }
 
   handleEditingBeerInList = (brewToEdit) => {
-    const editedFullBrewList = this.state.fullBrewList
-      .filter(brew => brew.id !== this.state.selectedBrew.id)
-      .concat(brewToEdit);
+   const { dispatch } = this.props;
+   const action = actions.addBrew(brewToEdit);
+   dispatch(action);
     this.setState({
-      fullBrewList: editedFullBrewList,
       editing: false,
       selectedBrew: null
     });
