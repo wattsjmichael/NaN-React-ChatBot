@@ -11,13 +11,13 @@ function App() {
     <React.Fragment>
       <Header />
       <BeerControl />
-      <LexChat botName="OrderFlowers"
-        IdentityPoolId="us-east-1:7292b8c0-56f1-4441-b2a6-xxxxxxxxxxxx"
-        placeholder="Placeholder text"
+      <LexChat botName="NaNBeerBot"
+        IdentityPoolId="us-west-2:d06068cd-771b-44c1-9f78-6fbd303f8c31"
+        placeholder="Say 'Hi' "
         style={{ position: 'absolute' }}
-        backgroundColor="#FFFFFF"
-        height="430px"
-        headerText="Chat with our awesome bot" />
+        backgroundColor="white"
+        height= "400px"
+        headerText="Chat with Travis_Bot" />
 
     </React.Fragment>
   );
