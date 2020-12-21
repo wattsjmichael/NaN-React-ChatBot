@@ -1,6 +1,6 @@
 export const deleteBrew = id => ({
   type: "DELETE_BREW",
-  id: 1
+  id
 });
 
 export const toggleForm = () => ({
@@ -20,13 +20,13 @@ export const addBrew = (brew) => {
 
 export const editBrew = () => {
   return {
-    type: "EDIT_KEG"
+    type: "EDIT_BREW"
   }
 }
 
 export const notEditBrew = () => {
   return {
-    type: "NOT_EDIT_KEG"
+    type: "NOT_EDIT_BREW"
   }
 }
 

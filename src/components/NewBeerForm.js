@@ -8,12 +8,7 @@ function NewBeerForm(props){
 
   function handleNewBeerFormSubmission(event) {
     event.preventDefault();
-    props.onNewBeerCreation({
-    name: event.target.name.value,
-    style: event.target.style.value,
-    price: event.target.price.value,
-    id: v4()
-    });
+    props.onNewBeerCreation({name: event.target.name.value, style: event.target.style.value, price: event.target.price.value, id: v4()});
   }
 
 

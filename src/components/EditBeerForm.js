@@ -7,7 +7,7 @@ function EditBeerForm (props) {
 
   function handleEditBeerFormSubmission(event) {
     event.preventDefault();
-    props.onEditBeer({
+    props.onEditBrew({
       name: event.target.name.value,
       style: event.target.style.value,
       price: event.target.price.value,
@@ -23,8 +23,7 @@ function EditBeerForm (props) {
 }
 
 EditBeerForm.propTypes = {
-  brew: PropTypes.object,
-  onEditBeer: PropTypes.func
+  onEditBrew: PropTypes.func
 }
 
 export default EditBeerForm;

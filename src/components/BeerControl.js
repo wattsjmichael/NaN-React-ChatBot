@@ -48,7 +48,8 @@ class BeerControl extends React.Component {
     const { dispatch } = this.props;
     const action = actions.deleteBrew(id);
     dispatch(action);
-    this.setState({ selectedBrew: null });
+    const action2 = actions.notSelectedBrew();
+    dispatch(action2);
 
   }
 
@@ -74,7 +75,7 @@ class BeerControl extends React.Component {
 
 
     if (this.props.editing) {
-      currentlyVisibleState = <EditBeerForm brew={this.props.selectedBrew} onEditBeer={this.handleEditingBeerInList} />
+      currentlyVisibleState = <EditBeerForm brew={this.props.selectedBrew} onEditBrew={this.handleEditingBeerInList} />
       buttonText = "Homepage"
 
     } else if (this.props.selectedBrew != null) {
