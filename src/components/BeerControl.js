@@ -12,7 +12,7 @@ class BeerControl extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      formVisibleOnPage: false,
+      // formVisibleOnPage: false,
       fullBrewList: [],
       selectedBrew: null,
       editing: false,
@@ -22,14 +22,19 @@ class BeerControl extends React.Component {
   handleClick = () => {
     if (this.state.selectedBrew != null) {
       this.setState({
-        formVisibleOnPage: false,
+        // formVisibleOnPage: false,
         selectedBrew: null,
         editing: false
       });
     } else {
-      this.setState(prevState => ({
-        formVisibleOnPage: !prevState.formVisibleOnPage
-      }));
+      const {dispatch} = this.props;
+      const action = {
+        type: 'TOGGLE_FORM'
+      }
+      dispatch(action);
+      // this.setState(prevState => ({
+      //   formVisibleOnPage: !prevState.formVisibleOnPage
+      // }));
     }
   }
 
@@ -44,7 +49,11 @@ class BeerControl extends React.Component {
       id: id,
     }
     dispatch(action);
-    this.setState({ formVisibleOnPage: false });
+    const action2 = {
+      type: 'TOGGLE_FORM'
+    }
+    dispatch(action2);
+    // this.setState({ formVisibleOnPage: false });
   }
 
 
@@ -94,7 +103,7 @@ class BeerControl extends React.Component {
         onClickingDelete={this.handleDeletingBrew}
         onClickingEdit={this.handleEditClick} />
       buttonText = "Homepage"
-    } else if (this.state.formVisibleOnPage) {
+    } else if (this.props.formVisibleOnPage) {
       currentlyVisibleState = <NewBeerForm onNewBeerCreation={this.handleAddingNewBeerToList} />;
       buttonText = "Homepage";
     } else {
@@ -112,13 +121,16 @@ class BeerControl extends React.Component {
 }
 
 BeerControl.propTypes = {
-  fullBrewList: PropTypes.object
+  fullBrewList: PropTypes.object,
+  beerFormVisibleOnPage: PropTypes.bool
+  
 };
 
 
 const mapStatetoProps = state => {
   return {
-    fullBrewList: state
+    fullBrewList: state,
+    beerFormVisibleOnPage: state.beerFormVisibleOnPage
   }
 }
 

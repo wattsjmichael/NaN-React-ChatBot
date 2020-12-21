@@ -16,9 +16,9 @@ function Brew(props) {
 }
 
 Brew.propTypes = {
-  name : PropTypes.string.isRequired,
-  style : PropTypes.string.isRequired,
-  price : PropTypes.string.isRequired,
+  name : PropTypes.string,
+  style : PropTypes.string,
+  price : PropTypes.string,
   id : PropTypes.string,
   whenBrewClicked: PropTypes.func
 };

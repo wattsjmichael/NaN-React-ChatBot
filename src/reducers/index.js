@@ -3,7 +3,7 @@ import beerListReducer from "./beer-list-reducer";
 import { combineReducers } from  'redux';
 
 const rootReducer = combineReducers({
-  beerFormVisibleOnPage: beerFormVisibleReducer,
+  beerFormVisible: beerFormVisibleReducer,
   fullBrewList: beerListReducer
 });
 
