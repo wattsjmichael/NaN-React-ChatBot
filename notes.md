@@ -70,3 +70,6 @@ Stopping with Chatbot for now, probably should work on the website
 So the chat bot is now going to become a conversational bot. In the future I will make it be able to get orders. 
 
 setting up Firebase
+not setting up firebase 7.8.0 is not working
+going to try install firebase 8.2.0 instead
+
