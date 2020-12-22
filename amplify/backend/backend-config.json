@@ -1,0 +1,15 @@
+{
+  "auth": {
+    "cognito16743e85": {
+      "service": "Cognito",
+      "serviceType": "managed",
+      "providerPlugin": "awscloudformation"
+    }
+  },
+  "xr": {
+    "travisBot": {
+      "service": "Sumerian",
+      "providerPlugin": "awscloudformation"
+    }
+  }
+}
