@@ -73,4 +73,3 @@ setting up Firebase
 not setting up firebase 7.8.0 is not working
 going to try install firebase 8.2.0 instead
 
-Going to install amplify... might break the project
